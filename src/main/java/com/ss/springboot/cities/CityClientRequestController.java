@@ -73,14 +73,13 @@ public class CityClientRequestController {
                     "wrong URL requested: " + requestURL + " \n check connection properties.");
             return "error";
         }
+        cityServerRequest.setResponse(result);
 
         if (success) {
-            cityServerRequest.setResponse(result);
             cityServerRequest.setCities(cityView);
             return "result";
         }
 
-        cityServerRequest.setResponse(result);
         return "error";
     }
 
