@@ -1,8 +1,7 @@
-package com.ss.springboot.cities.utils;
+package com.ss.cities.client.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ss.springboot.cities.CityServerRequest;
 import no.bouvet.jsonclient.JsonClient;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

@@ -1,4 +1,4 @@
-package com.ss.springboot.cities;
+package com.ss.cities.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

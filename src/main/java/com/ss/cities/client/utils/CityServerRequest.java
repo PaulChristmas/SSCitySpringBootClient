@@ -1,4 +1,4 @@
-package com.ss.springboot.cities;
+package com.ss.cities.client.utils;
 
 import java.util.LinkedList;
 import java.util.List;

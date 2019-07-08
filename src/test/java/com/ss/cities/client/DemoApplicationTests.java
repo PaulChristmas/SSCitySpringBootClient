@@ -1,4 +1,4 @@
-package com.ss.springboot.cities;
+package com.ss.cities.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
