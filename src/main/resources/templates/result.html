@@ -12,7 +12,7 @@
 <table>
     <tbody>
     <tr th:each="city : ${cityServerRequest.cities}">
-        <td><span th:text="${city}"> </span></td>
+        <td><span th:text="${city.toString()}"> </span></td>
     </tr>
     </tbody>
 </table>

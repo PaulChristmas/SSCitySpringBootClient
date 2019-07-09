@@ -11,15 +11,15 @@ public class CityServerRequest {
     private boolean locked;
     private String response;
 
-    public List<String> getCities() {
+    public List<Object> getCities() {
         return cities;
     }
 
-    public void setCities(List<String> cities) {
+    public void setCities(List<Object> cities) {
         this.cities = cities;
     }
 
-    private List<String> cities;
+    private List<Object> cities;
 
     public CityServerRequest() {
         cityName = "";
