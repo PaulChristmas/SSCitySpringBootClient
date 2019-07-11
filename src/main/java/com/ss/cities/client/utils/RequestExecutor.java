@@ -105,7 +105,8 @@ public class RequestExecutor {
 
             result.setResponseContent(parsedParameters.get("responseContent").toString());
             result.setRecordList(cityView);
-            result.setRequestOk(true);
+            String requestStatus = parsedParameters.get("requestOk").toString();
+            result.setRequestOk(Boolean.parseBoolean(requestStatus));
         } catch (Exception e) {
             result.setResponseContent("Response has wrong format");
         }
