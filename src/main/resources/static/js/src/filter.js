@@ -3,12 +3,17 @@ inputFilter['GET'] = [];
 inputFilter['POST'] = ["cityName", "states"];
 inputFilter['UPDATE'] = ["cityName", "updateName"];
 inputFilter['DELETE'] = ["cityName"];
+inputFilter['FIND'] = ["cityName"];
+
+var method;
 
 window.onload = function() {
-    enable('GET');
+    method = 'GET';
+    enable(method);
 };
 
 function enable(inputList) {
+    document.getElementById('cityForm').setAttribute("action", "/" + method);
     var fields = document.getElementsByName("inputField");
     var allowed = inputFilter[inputList];
     for (var i = 0; i < fields.length; i++) {
@@ -28,7 +33,15 @@ function includeElement(element, included) {
     element.disabled = !included
 }
 
+function formAction() {
+    document.newForm.action = method;
+}
+
+function submitForm() {
+    document.myForm.submit();
+}
+
 function filter() {
-    var method = document.querySelector('input[name="action"]:checked').value;
+    method = document.querySelector('input[name="action"]:checked').value;
     enable(method);
 }

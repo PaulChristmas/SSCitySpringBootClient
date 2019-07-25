@@ -6,13 +6,15 @@
 </head>
 <body>
 <h1>Choose your action method</h1>
-<form action="#" th:action="@{/cityServerRequest}" th:object="${cityServerRequest}" method="post">
+<form onSubmit="formAction(this)" id="cityForm" th:object="${cityServerRequest}" method="post">
 
     <div class="actionControl" onclick="filter()"> Action performed
         <p><input name="action" th:field="*{action}" type="radio" value="GET" checked="checked"> GET</p>
         <p><input name="action" th:field="*{action}" type="radio" value="POST"> POST</p>
         <p><input name="action" th:field="*{action}" type="radio" value="UPDATE"> UPDATE</p>
         <p><input name="action" th:field="*{action}" type="radio" value="DELETE"> DELETE</p>
+        <p><input name="action" th:field="*{action}" type="radio" value="FIND"> FIND</p>
+
     </div>
 
     <p name="inputField" id="cityName">City name: <input type="text" th:field="*{cityName}"/></p>
@@ -23,7 +25,7 @@
         <p display="inline-block"><input th:field="*{locked}" type="radio" value="true"> Locked</p>
     </div>
 
-    <p><input id="submit" type="submit" value="Submit" /> <input id="reset" type="reset" value="Reset" onclick="enable('GET')"/></p>
+    <p><button id="submit"onclick="javascript: submitForm()" />Submit  </button><input id="reset" type="reset" value="Reset" onclick="enable('GET')"/></p>
 </form>
 
 <script th:inline="javascript" type="text/javascript" src="/js/src/filter.js"></script>

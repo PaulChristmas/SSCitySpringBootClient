@@ -1,0 +1,15 @@
+server:
+  port: 8082
+request:
+  address: localhost
+  port: 8081
+  url: ${request.address}:${request.port}
+feign:
+  client:
+    name: cityConsumer
+  hystrix:
+    enabled: true
+error:
+  timeout: Server timeout is reached. Check connection properties. Requested address is ${request.url}
+response:
+  encoding: UTF-8

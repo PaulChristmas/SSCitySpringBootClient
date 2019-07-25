@@ -1,13 +1,12 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.3.RELEASE'
+        springBootVersion = '+'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("no.bouvet:json-client:1.0.5")
     }
 }
 
@@ -28,15 +27,30 @@ repositories {
 
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
+    compileOnly "org.springframework.boot:spring-boot-starter"
+    compileOnly "org.springframework.boot:spring-boot-starter-web"
     compile('org.springframework.boot:spring-boot-starter-web-services')
     runtime('javax.xml.bind:jaxb-api')
-    runtime('no.bouvet:json-client:1.0.5')
-    compile 'no.bouvet:json-client:1.0.5'
     compile 'org.javassist:javassist:3.18.2-GA'
     compile 'com.ss.server:lib:1.0'
     runtime('com.ss.server:lib:1.0')
+
+    compile("org.springframework.cloud:spring-cloud-starter-openfeign:+") {
+        exclude group: 'io.github.openfeign', module: 'feign-core'
+    }
+    compile 'io.github.openfeign:feign-core:+'
     
+    compile('com.netflix.feign:feign-jackson:+')
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:+")
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-ribbon:+")
+
+    compile('io.springfox:springfox-swagger2:+')
+    compile('io.springfox:springfox-swagger-ui:+')
+    
+    compileOnly 'org.projectlombok:lombok:+'
+    annotationProcessor 'org.projectlombok:lombok:+'
+
+    runtime('org.mockito:mockito-core:2.22.0')
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
