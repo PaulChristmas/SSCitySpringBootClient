@@ -5,12 +5,14 @@ import com.ss.cities.client.services.CityRequestClient;
 import com.ss.cities.client.utils.CityServerRequest;
 import feign.hystrix.FallbackFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.ss.server.lib.JSONTemplateResponse;
 
 @Component
-public class CityRequestClientFallbackFactory implements FallbackFactory<CityRequestClient> {
-
+public class CityRequestClientFallbackFactory {//implements FallbackFactory<CityRequestClient> {
+/*
     @Value("${error.timeout}")
     String timeout;
 
@@ -43,9 +45,9 @@ public class CityRequestClientFallbackFactory implements FallbackFactory<CityReq
             }
 
             @Override
-            public JSONTemplateResponse cityServerRequestPost(CityServerRequest cityServerRequest) {
-                return response;
+            public ResponseEntity cityServerRequestPost(CityServerRequest cityServerRequest) {
+                return new ResponseEntity(ex.getMessage(), HttpStatus.BAD_GATEWAY);
             }
         };
-    }
+    }*/
 }

@@ -17,38 +17,38 @@ public class CityClientRequestController {
     @Autowired
     private SubmitActionServiceImpl submitService;
 
-    @GetMapping(value={"", "/", "/cityServerRequest"})
+    @RequestMapping(value={"", "/", "/cityServerRequest"}, method = RequestMethod.GET)
     public String cityServerRequestForm(Model model) {
         model.addAttribute("cityServerRequest", new CityServerRequest());
         return "cityServerRequest";
     }
 
     @ApiOperation(value = "Список заданных городов")
-    @RequestMapping("/GET")
+    @RequestMapping(value = "/GET", method = RequestMethod.POST)
     public String cityServerRequestGet(@ModelAttribute CityServerRequest cityServerRequest) {
         return submitService.doGet(cityServerRequest);
     }
 
     @ApiOperation(value = "Поиск города по имени")
-    @RequestMapping("/FIND")
+    @RequestMapping(value = "/FIND", method = RequestMethod.POST)
     public String cityServerRequestFind(@ModelAttribute CityServerRequest cityServerRequest) {
         return submitService.doFind(cityServerRequest);
     }
 
     @ApiOperation(value = "Изменение имени города (если он существует и не закрыт для изменений)")
-    @RequestMapping("/UPDATE")
+    @RequestMapping(value = "/UPDATE", method = RequestMethod.POST)
     public String cityServerRequestUpdate(@ModelAttribute CityServerRequest cityServerRequest) {
         return submitService.doUpdate(cityServerRequest);
     }
 
     @ApiOperation(value = "Удаление города по имени (если он существует и не закрыт для изменений)")
-    @RequestMapping("/DELETE")
+    @RequestMapping(value = "/DELETE", method = RequestMethod.POST)
     public String cityServerRequestDelete(@ModelAttribute CityServerRequest cityServerRequest) {
         return submitService.doDelete(cityServerRequest);
     }
 
     @ApiOperation(value = "Добавление нового города")
-    @RequestMapping("/POST")
+    @RequestMapping(value = "/POST", method = RequestMethod.POST)
     public String cityServerRequestPost(@ModelAttribute CityServerRequest cityServerRequest) {
         return submitService.doPost(cityServerRequest);
     }

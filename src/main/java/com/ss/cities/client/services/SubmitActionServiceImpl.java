@@ -2,6 +2,7 @@ package com.ss.cities.client.services;
 
 import com.ss.cities.client.utils.CityServerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.ss.server.lib.JSONTemplateResponse;
 
@@ -12,28 +13,33 @@ public class SubmitActionServiceImpl {
     CityRequestClient client;
 
     public String doPost(CityServerRequest cityServerRequest) {
-        JSONTemplateResponse answer = client.cityServerRequestPost(cityServerRequest);
-        return setAnswerType(cityServerRequest, answer);
+        ResponseEntity answer = client.cityServerRequestPost(cityServerRequest);
+        cityServerRequest.setResponse(answer.getBody().toString());
+        return "result";
     }
 
     public String doGet(CityServerRequest cityServerRequest) {
-        JSONTemplateResponse answer = client.cityServerRequestGet();
-        return setAnswerType(cityServerRequest, answer);
+        ResponseEntity answer = client.cityServerRequestGet();
+        cityServerRequest.setResponse(answer.getBody().toString());
+        return "result";
     }
 
     public String doFind(CityServerRequest cityServerRequest) {
-        JSONTemplateResponse answer = client.cityServerRequestFind(cityServerRequest);
-        return setAnswerType(cityServerRequest, answer);
+        ResponseEntity answer = client.cityServerRequestFind(cityServerRequest);
+        cityServerRequest.setResponse(answer.getBody().toString());
+        return "result";
     }
 
     public String doUpdate(CityServerRequest cityServerRequest) {
-        JSONTemplateResponse answer = client.cityServerRequestUpdate(cityServerRequest);
-        return setAnswerType(cityServerRequest, answer);
+        ResponseEntity answer = client.cityServerRequestUpdate(cityServerRequest);
+        cityServerRequest.setResponse(answer.getBody().toString());
+        return "result";
     }
 
     public String doDelete(CityServerRequest cityServerRequest) {
-        JSONTemplateResponse answer = client.cityServerRequestDelete(cityServerRequest);
-        return setAnswerType(cityServerRequest, answer);
+        ResponseEntity answer = client.cityServerRequestDelete(cityServerRequest);
+        cityServerRequest.setResponse(answer.getBody().toString());
+        return "result";
     }
 
     private String setAnswerType(CityServerRequest cityServerRequest, JSONTemplateResponse answer){
